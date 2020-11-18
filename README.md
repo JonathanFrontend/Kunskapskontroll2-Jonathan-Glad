@@ -1,2 +1,2 @@
 # Kunskapskontroll2-Jonathan-Glad
- Kunskapskontroll 2
+ En väderapp där man skriver in en stad och ser stadens namn, land (förkortat), stadens temperatur (i celsius), väderbeskrivning med ikon, vindhastighet och luftfuktighet.
