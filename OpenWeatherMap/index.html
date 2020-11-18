@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Open Weather App</title>
+</head>
+<body>
+    <header class="main-header">
+        <h1 id="h-title">
+            The Weather App
+        </h1>
+        <form id="form">
+            <input type="text" id="text" autocomplete="off">
+            <input type="submit" id="btn" value="Hitta stad">
+        </form>
+    </header>
+    <main class="container">
+        <div class="box-1">
+            <h1 id="top-title"></h1>
+            <h2 id="city" class="b-title"></h2>
+            <h1 id="temp" class="t-title"></h1>
+            <div class="sub-box-1">
+                <h2 id="des" class="b-title"></h2>
+                <img id="icon" alt="Icon">
+                <h3 id="more-icons">
+                    
+                </h3>
+            </div>
+            <h2 id="wind" class="b-title"></h2>
+            <h2 id="humidity" class="b-title"></h2>
+        </div>
+        <div class="box-2">
+            <h2 id="smiley"></h2>
+        </div>
+    </main>
+    <footer class="main-footer">
+        <p class="history">Historik:</p>
+        <ul class="history-list">
+
+        </ul>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+</html>
