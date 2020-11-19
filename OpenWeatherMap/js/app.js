@@ -1,4 +1,4 @@
-const apiKey = ''; //Skriv in din API-nyckel;
+const apiKey = 'e6b2ccf63a079a77b39aaa7316d4eb7c'; //Skriv in din API-nyckel;
 
 const form = document.querySelector('#form'); //Väljer formuläret med id "form";
 
@@ -72,12 +72,6 @@ function getCityWeatherData(cityName){
             humidity.innerText = `Luftfuktighet: ${data.main.humidity}%`;
 
             let l = 90 - (data.main.temp * 1.2); //Används för att bestämma färgen på bakgrunden.
-
-            /* if (l > 90){
-                l = 90;
-            } else if (l < 50) {
-                l = 50;
-            } */
 
             if (l > 65) {
                 box1.style.color = 'black';
