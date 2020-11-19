@@ -1,4 +1,4 @@
-const apiKey = 'e6b2ccf63a079a77b39aaa7316d4eb7c'; //Skriv in din API-nyckel;
+const apiKey = ''; //Skriv in din API-nyckel;
 
 const form = document.querySelector('#form'); //Väljer formuläret med id "form";
 
