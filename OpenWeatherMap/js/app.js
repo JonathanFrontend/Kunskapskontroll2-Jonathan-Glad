@@ -29,7 +29,7 @@ form.addEventListener('submit', function(e){
 
 function getCityWeatherData(cityName){
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric&lang=se`;
-    fetch(url).then( //Väntar på respons från APIn.
+    fetch(url).then( //Väntar på respons från APIn. Om responsen är godkännande får vi ta del av datan.
         function(response) {
             console.log(response)
             if (response.status >= 200 && response.status < 300){
