@@ -1,4 +1,5 @@
-const apiKey = ''; //Skriv in din API-nyckel;
+const apiKey = 'e6b2ccf63a079a77b39aaa7316d4eb7c'; //Skriv in din API-nyckel;
+const countryUrl = 'https://restcountries.eu/rest/v2/all';
 
 const form = document.querySelector('#form'); //Väljer formuläret med id "form";
 
@@ -16,6 +17,7 @@ const box2 = document.querySelector('.box-2'); //väljer boxen där smileys ska 
 const smiley = document.querySelector('#smiley');
 const footer = document.querySelector('.footer'); //Väljer footern.
 const historyList = document.querySelector('.history-list'); //Lista med historik.
+const flag = document.querySelector('#flag');
 
 form.addEventListener('submit', function(e){ 
     const text = document.querySelector('#text');
@@ -56,12 +58,17 @@ function getCityWeatherData(cityName){
             moreIcons.innerHTML = ''; // Ifall väderbeskrivningen inte har fler än en beskrivning och därmed inte fler ikoner.
             if (data.weather.length > 1){ //Skulle vädret ha flera beskrivningar och ikoner (weather-arrayn ha fler än ett element).
                 for (let i = 1; i < data.weather.length; i++){
-                    description = description + ' och ' + data.weather[i].description;
 
                     let newIcon = document.createElement('img');
                     newIcon.src = `http://openweathermap.org/img/wn/${data.weather[i].icon}.png`;
                     newIcon.classList.add('another-icon');
                     moreIcons.appendChild(newIcon);
+                    if (data.weather[i].description == data.weather[i-1].description) {
+                        description = description + ' och ' + data.weather[i].description;
+                    }
+                    else {
+                        description = description + ' och ' + data.weather[i].description;
+                    }
                     
                 }
             }
@@ -73,14 +80,9 @@ function getCityWeatherData(cityName){
 
             let l = 90 - (data.main.temp * 1.2); //Används för att bestämma färgen på bakgrunden.
 
-            if (l > 65) {
-                box1.style.color = 'black';
-            } else if (l < 65) {
-                box1.style.color = 'white';
-            }
 
             console.log(l)
-            container.style.backgroundColor = `hsl(30, 100%, ${l}%)`;
+            container.style.backgroundColor = `hsl(44, 100%, ${l}%)`;
 
             if (data.main.temp < 0) {
                 smiley.innerText = '🥶';
@@ -101,6 +103,7 @@ function getCityWeatherData(cityName){
             historyItem.classList.add('history-item');
             historyList.appendChild(historyItem);
 
+            getCountryFlag(data.sys.country);
         }
     ).catch(
         function(error){
@@ -116,6 +119,23 @@ function getCityWeatherData(cityName){
             box1.style.color = 'black';
             icon.style.display = 'none';
             moreIcons.innerHTML = '';
+            flag.style.display = 'none';
         }
     );
+}
+
+function getCountryFlag(country) { //Hämtar landets flagga.
+    fetch(countryUrl).then(
+        response => response.json()
+    ).then(
+        data => {
+            console.log(data);
+            for (let i = 0; i < data.length; i++){
+                if (data[i].alpha2Code == country) {
+                    flag.style.display = 'inline';
+                    flag.src = data[i].flag;
+                }
+            }
+        }
+    )
 }
