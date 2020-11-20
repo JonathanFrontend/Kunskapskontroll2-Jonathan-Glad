@@ -1,4 +1,4 @@
-const apiKey = 'e6b2ccf63a079a77b39aaa7316d4eb7c'; //Skriv in din API-nyckel;
+const apiKey = ''; //Skriv in din API-nyckel;
 const countryUrl = 'https://restcountries.eu/rest/v2/all';
 
 const form = document.querySelector('#form'); //Väljer formuläret med id "form";
@@ -22,9 +22,6 @@ const flag = document.querySelector('#flag');
 form.addEventListener('submit', function(e){ 
     const text = document.querySelector('#text');
     let cn = text.value;
-    if (cn == ''){
-        cn = 'stockholm'; //Ifall man inte har skrivit in något, så är det Stockholm by default (så jag slipper skriva in ngt för varje testning).
-    }
     getCityWeatherData(cn); //Kallar på functionen som hämtar datan.
     e.preventDefault();
 });
@@ -41,6 +38,8 @@ function getCityWeatherData(cityName){
                 throw response.status + ": " + response.statusText;
             } else if (response.status == 404){
                 throw response.status + ": Staden kunde inte hittas";
+            } else if (response.status == 400){
+                throw response.status + ": Du har inte skrivit in någon stad";
             } else {
                 throw response.status + ": Något gick fel";
             }
