@@ -1,5 +1,5 @@
-const apiKey = ''; //Skriv in din API-nyckel;
-const countryUrl = 'https://restcountries.eu/rest/v2/all';
+const apiKey = ''; //Skriv in din API-nyckel.
+const countryUrl = 'https://restcountries.eu/rest/v2/all'; //Används för att hämta flaggor.
 
 const form = document.querySelector('#form'); //Väljer formuläret med id "form";
 
